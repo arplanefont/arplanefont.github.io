@@ -2,69 +2,28 @@
 layout: default
 ---
 
-<div class="main-container">
-    <div class="sidebar">
-        <h2>Preview</h2>
-        <input type="text" placeholder="Type something" class="preview-input">
-        <div class="slider-container">
-            <label for="font-size-slider">40px</label>
-            <input type="range" id="font-size-slider" name="font-size-slider" min="16" max="100" value="40">
+<div class="header">
+    <h1>Google Fonts</h1>
+</div>
+<div class="filter-buttons">
+    <button class="filter-button">Readability</button>
+    <button class="filter-button">Material Design Guidelines</button>
+    <button class="filter-button">Optimize Font Loading</button>
+</div>
+<div class="font-list">
+    {% for post in site.posts %}
+    <div class="font-item">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.author }}</p>
+        <div class="font-preview" style="font-family: '{{ post.title }}'; font-size: 40px;">
+            {{ post.content | strip_html | truncatewords: 10 }}
         </div>
-        <h3>Filter</h3>
-        <div class="filter-section">
-            <label for="language">Language</label>
-            <select id="language">
-                <option value="all">All</option>
-                <option value="latin">Latin</option>
-                <option value="cyrillic">Cyrillic</option>
-                <!-- เพิ่มเติม -->
-            </select>
-        </div>
+        <a href="{{ post.url }}">View Details</a>
     </div>
-
-    <div class="content-area">
-        <div class="header">
-            <h1>Google Fonts</h1>
-        </div>
-        <div class="filter-buttons">
-            <button class="filter-button">Readability</button>
-            <button class="filter-button">Material Design Guidelines</button>
-            <button class="filter-button">Optimize Font Loading</button>
-        </div>
-        <div class="font-list">
-            {% for post in site.posts %}
-            <div class="font-item">
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.author }}</p>
-                <div class="font-preview" style="font-family: '{{ post.title }}'; font-size: 40px;">
-                    {{ post.content | strip_html | truncatewords: 10 }}
-                </div>
-                <a href="{{ post.url }}">View Details</a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+    {% endfor %}
 </div>
 
 <style>
-    .main-container {
-        display: flex;
-        padding: 20px;
-    }
-
-    .sidebar {
-        width: 300px;
-        background-color: #f7f9fc;
-        padding: 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        margin-right: 20px;
-    }
-
-    .content-area {
-        flex-grow: 1;
-    }
-
     .header h1 {
         font-size: 2em;
         margin-bottom: 20px;
@@ -108,35 +67,6 @@ layout: default
         margin-bottom: 10px;
         background-color: #eef3ff;
         padding: 10px;
-        border-radius: 8px;
-    }
-
-    .preview-input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        margin-bottom: 20px;
-    }
-
-    .slider-container {
-        margin-bottom: 20px;
-    }
-
-    .filter-section {
-        margin-bottom: 20px;
-    }
-
-    .filter-section label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
-
-    .filter-section select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
         border-radius: 8px;
     }
 </style>
