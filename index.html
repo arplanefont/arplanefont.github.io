@@ -1,0 +1,18 @@
+---
+layout: default
+title: ฟอนต์ทั้งหมด
+---
+
+<h2>ฟอนต์ทั้งหมด</h2>
+
+<ul>
+    {% for post in site.posts %}
+        <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+            <p>โดย {{ post.author }}</p>
+            <p>{{ post.excerpt }}</p>
+            <p><strong>วันเปิดให้ดาวน์โหลด:</strong> {{ post.release_date }}</p>
+            <p><strong>วันหมดอายุ:</strong> {{ post.expire_date }}</p>
+        </li>
+    {% endfor %}
+</ul>
