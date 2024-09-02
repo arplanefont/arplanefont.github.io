@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arplane Font</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .preview {
+            flex-grow: 1;
+            background-color: #eef3ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filter-section {
+            margin-top: 20px;
+        }
+
+        .filter-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .filters button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .filters button:hover {
+            background-color: #0056b3;
+        }
+
+        .guidelines {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .guideline-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .guideline-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="preview" id="preview">Type something</div>
+        <div class="slider-container">
+            <label for="fontSize">40px</label>
+            <input type="range" id="fontSize" min="10" max="100" value="40" oninput="updateFontSize(this.value)">
+        </div>
+        <div class="filter-section">
+            <h3>Filter</h3>
+            <select id="writingSystem">
+                <option>Writing system</option>
+            </select>
+            <select id="language">
+                <option>Language</option>
+            </select>
+        </div>
+    </div>
+    <div class="content">
+        <div class="filters">
+            <button onclick="resetFilters()">Reset all</button>
+            <button>Filters</button>
+        </div>
+        <div class="guidelines">
+            <div class="guideline-item">Readability</div>
+            <div class="guideline-item">Material design guidelines</div>
+            <div class="guideline-item">Optimize font loading</div>
+        </div>
+    </div>
+
+    <script>
+        function updateFontSize(size) {
+            const preview = document.getElementById('preview');
+            preview.style.fontSize = size + 'px';
+            preview.innerHTML = size + 'px';
+        }
+
+        function resetFilters() {
+            document.getElementById('fontSize').value = 40;
+            updateFontSize(40);
+        }
+    </script>
+</body>
+</html>
