@@ -21,43 +21,35 @@ layout: default
     </code>
 
     <h3>ตัวอย่างฟอนต์:</h3>
-    <p id="font-example" style="font-family: '{{ page.font_family }}'; font-size: 24px;">พิมพ์ข้อความที่นี่:</p>
-    <input type="text" id="font-input" placeholder="พิมพ์ที่นี่..." style="font-family: '{{ page.font_family }}'; font-size: 24px; width: 100%; padding: 10px;">
-    
-    <h4>ปรับขนาดอักษร:</h4>
-    <button onclick="changeFontSize(-2)">ลดขนาด</button>
-    <button onclick="changeFontSize(2)">เพิ่มขนาด</button>
+    <p id="font-example" style="font-family: "{{ page.font_family }}"; font-size: 24px;">พิมพ์ข้อความที่นี่:</p>
+    <input type="text" id="font-input" placeholder="พิมพ์ที่นี่..." style="font-family: "{{ page.font_family }}"; font-size: 24px; width: 100%; padding: 10px;">
 
     <script>
-        const input = document.getElementById('font-input');
-        const fontExample = document.getElementById('font-example');
+        document.addEventListener("DOMContentLoaded", function() {
+            const input = document.getElementById('font-input');
+            const fontExample = document.getElementById('font-example');
 
-        input.addEventListener('input', function() {
-            fontExample.innerText = this.value || "พิมพ์ข้อความที่นี่:";
+            input.addEventListener('input', function() {
+                fontExample.innerText = this.value || "พิมพ์ข้อความที่นี่:";
+            });
+
+            // Countdown logic
+            const releaseDate = new Date("{{ page.release_date }}").getTime();
+            const countdownElement = document.getElementById("countdown");
+
+            const countdown = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = releaseDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdown);
+                    countdownElement.innerHTML = "เปิดให้ดาวน์โหลดแล้ว!";
+                    document.getElementById("download-link").style.display = "inline";
+                } else {
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    countdownElement.innerHTML = days + " วัน";
+                }
+            }, 1000);
         });
-
-        function changeFontSize(change) {
-            const currentSize = parseFloat(window.getComputedStyle(fontExample).fontSize);
-            fontExample.style.fontSize = (currentSize + change) + 'px';
-            input.style.fontSize = (currentSize + change) + 'px';
-        }
-
-        // Countdown logic
-        const releaseDate = new Date("{{ page.release_date }}").getTime();
-        const countdownElement = document.getElementById("countdown");
-
-        const countdown = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = releaseDate - now;
-
-            if (distance < 0) {
-                clearInterval(countdown);
-                countdownElement.innerHTML = "เปิดให้ดาวน์โหลดแล้ว!";
-                document.getElementById("download-link").style.display = "inline";
-            } else {
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                countdownElement.innerHTML = days + " วัน";
-            }
-        }, 1000);
     </script>
 </div>
