@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif; /* ฟอนต์เริ่มต้นสำหรับเนื้อหา */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* สีพื้นหลัง */
+    color: #333; /* สีตัวอักษร */
+}
+
+header {
+    background: #007bff; /* สีพื้นหลังของ header */
+    color: #fff; /* สีตัวอักษรใน header */
+    padding: 10px 20px;
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    margin: 10px 0; /* ระยะห่างระหว่างหัวข้อ */
+}
+
+.font-post {
+    background: #fff; /* สีพื้นหลังของฟอนต์ */
+    border-radius: 5px; /* ขอบมน */
+    padding: 20px;
+    margin: 20px; /* ระยะห่างจากฟอนต์อื่น */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เงา */
+}
+
+input[type="text"] {
+    border: 1px solid #ccc; /* ขอบของ input */
+    border-radius: 4px; /* ขอบมน */
+    padding: 10px;
+    width: calc(100% - 22px); /* ความกว้าง */
+    font-size: 16px; /* ขนาดตัวอักษร */
+    margin-top: 10px; /* ระยะห่างบน */
+}
+
+button {
+    background-color: #007bff; /* สีพื้นหลังของปุ่ม */
+    color: white; /* สีตัวอักษรของปุ่ม */
+    border: none; /* ไม่ให้มีขอบ */
+    border-radius: 4px; /* ขอบมน */
+    padding: 10px 15px; /* ระยะห่างในปุ่ม */
+    cursor: pointer; /* เปลี่ยน cursor เป็น pointer */
+    margin-right: 5px; /* ระยะห่างขวาของปุ่ม */
+}
+
+button:hover {
+    background-color: #0056b3; /* สีพื้นหลังเมื่อ hover */
+}
+
+ul {
+    list-style-type: none; /* ไม่ให้มีจุดหน้ารายการ */
+    padding: 0; /* ไม่มี padding */
+}
+
+li {
+    margin: 10px 0; /* ระยะห่างระหว่างรายการ */
+    padding: 10px;
+    background: #e9ecef; /* สีพื้นหลังของรายการ */
+    border-radius: 4px; /* ขอบมน */
+}
