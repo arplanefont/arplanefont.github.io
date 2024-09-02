@@ -20,11 +20,28 @@ layout: default
         &lt;link rel="stylesheet" href="/css/fonts.css"&gt;
     </code>
 
-    <div class="font-example">
-        {{ content }}
-    </div>
+    <h3>ตัวอย่างฟอนต์:</h3>
+    <p id="font-example" style="font-family: '{{ page.font_family }}'; font-size: 24px;">พิมพ์ข้อความที่นี่:</p>
+    <input type="text" id="font-input" placeholder="พิมพ์ที่นี่..." style="font-family: '{{ page.font_family }}'; font-size: 24px; width: 100%; padding: 10px;">
     
+    <h4>ปรับขนาดอักษร:</h4>
+    <button onclick="changeFontSize(-2)">ลดขนาด</button>
+    <button onclick="changeFontSize(2)">เพิ่มขนาด</button>
+
     <script>
+        const input = document.getElementById('font-input');
+        const fontExample = document.getElementById('font-example');
+
+        input.addEventListener('input', function() {
+            fontExample.innerText = this.value || "พิมพ์ข้อความที่นี่:";
+        });
+
+        function changeFontSize(change) {
+            const currentSize = parseFloat(window.getComputedStyle(fontExample).fontSize);
+            fontExample.style.fontSize = (currentSize + change) + 'px';
+            input.style.fontSize = (currentSize + change) + 'px';
+        }
+
         // Countdown logic
         const releaseDate = new Date("{{ page.release_date }}").getTime();
         const countdownElement = document.getElementById("countdown");
