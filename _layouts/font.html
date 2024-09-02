@@ -5,7 +5,7 @@ layout: default
 <div class="font-post">
     <h2>{{ page.title }}</h2>
     <p>โดย {{ page.author }}</p>
-    
+
     {% assign current_date = site.time | date: "%Y-%m-%d" %}
     {% if current_date < page.release_date %}
         <p>ฟอนต์นี้จะเปิดให้ดาวน์โหลดใน <span id="countdown"></span></p>
@@ -14,15 +14,15 @@ layout: default
     {% else %}
         <p><a id="download-link" href="{{ page.download_link }}" download>ดาวน์โหลดฟอนต์</a></p>
     {% endif %}
-    
+
     <h3>วิธีใช้งานฟอนต์นี้ในเว็บไซต์ของคุณ:</h3>
     <code>
         &lt;link rel="stylesheet" href="/css/fonts.css"&gt;
     </code>
 
     <h3>ตัวอย่างฟอนต์:</h3>
-    <p id="font-example" style="font-family: "{{ page.font_family }}"; font-size: 24px;">พิมพ์ข้อความที่นี่:</p>
-    <input type="text" id="font-input" placeholder="พิมพ์ที่นี่..." style="font-family: "{{ page.font_family }}"; font-size: 24px; width: 100%; padding: 10px;">
+    <p id="font-example" style="font-family: '{{ page.font_family }}'; font-size: 24px;">พิมพ์ข้อความที่นี่:</p>
+    <input type="text" id="font-input" placeholder="พิมพ์ที่นี่..." style="font-family: '{{ page.font_family }}'; font-size: 24px; width: 100%; padding: 10px;">
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -52,4 +52,14 @@ layout: default
             }, 1000);
         });
     </script>
+
+    <style>
+        @font-face {
+            font-family: '{{ page.font_family }}';
+            src: url('{{ page.download_link | append: ".ttf" }}') format('truetype'),
+                 url('{{ page.download_link | append: ".otf" }}') format('opentype'),
+                 url('{{ page.download_link | append: ".woff" }}') format('woff'),
+                 url('{{ page.download_link | append: ".woff2" }}') format('woff2');
+        }
+    </style>
 </div>
