@@ -1,0 +1,29 @@
+title: Arplane Font
+description: แจกฟอนต์ที่ออกแบบอย่างสวยงาม
+baseurl: ""  # ถ้าคุณใช้ subdirectory ให้ตั้งค่านี้เป็น "/ชื่อโฟลเดอร์"
+url: "http://arplanefont.github.io"  # เปลี่ยน URL นี้ตามที่ใช้งานจริง
+
+# ภาษา
+language: "th"  # กำหนดภาษาเป็นไทย
+
+# รูปแบบวันที่
+time_format: "%Y-%m-%d"
+
+# ตัวเลือกในการแสดงโพสต์
+posts:
+  permalink: /:year/:month/:day/:title/  # รูปแบบ URL ของโพสต์
+  categories: true  # เปิดใช้งานหมวดหมู่
+  tags: true  # เปิดใช้งานแท็ก
+
+# ตัวเลือกสำหรับการจัดการกับรูปภาพ
+include:
+  - _posts
+  - fonts
+
+# ตัวเลือกเกี่ยวกับธีม (สามารถเลือกได้ตามความต้องการ)
+theme: minima  # สามารถเปลี่ยนเป็นธีมอื่น ๆ ได้
+
+# การตั้งค่าผู้เขียน
+author:
+  name: "Chayaphol Roibang"  # ชื่อผู้เขียนหลัก
+  email: "chayapholroibang@gmail.com"  # อีเมลผู้เขียน
