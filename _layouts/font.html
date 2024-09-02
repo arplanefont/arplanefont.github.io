@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<div class="font-post">
+    <h2>{{ page.title }}</h2>
+    <p>โดย {{ page.author }}</p>
+    
+    {% assign current_date = site.time | date: "%Y-%m-%d" %}
+    {% if current_date < page.release_date %}
+        <p>ฟอนต์นี้จะเปิดให้ดาวน์โหลดใน <span id="countdown"></span></p>
+    {% elsif current_date > page.expire_date %}
+        <p>ฟอนต์นี้หมดอายุแล้ว</p>
+    {% else %}
+        <p><a id="download-link" href="{{ page.download_link }}" download>ดาวน์โหลดฟอนต์</a></p>
+    {% endif %}
+    
+    <h3>วิธีใช้งานฟอนต์นี้ในเว็บไซต์ของคุณ:</h3>
+    <code>
+        &lt;link rel="stylesheet" href="/css/fonts.css"&gt;
+    </code>
+
+    <div class="font-example">
+        {{ content }}
+    </div>
+    
+    <script>
+        // Countdown logic
+        const releaseDate = new Date("{{ page.release_date }}").getTime();
+        const countdownElement = document.getElementById("countdown");
+
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = releaseDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                countdownElement.innerHTML = "เปิดให้ดาวน์โหลดแล้ว!";
+                document.getElementById("download-link").style.display = "inline";
+            } else {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                countdownElement.innerHTML = days + " วัน";
+            }
+        }, 1000);
+    </script>
+</div>
