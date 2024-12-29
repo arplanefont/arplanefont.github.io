@@ -61,5 +61,8 @@ layout: default
                  url('{{ page.download_link | append: ".woff" }}') format('woff'),
                  url('{{ page.download_link | append: ".woff2" }}') format('woff2');
         }
+        p {
+            font-family: '{{ page.font_family }}';
+        }
     </style>
 </div>
